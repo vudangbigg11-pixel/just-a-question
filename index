@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Nhí nhố 💖</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+
+            background-color: #ffc0cb;
+            background-image:
+                radial-gradient(#ff69b4 10%, transparent 11%),
+                radial-gradient(#ff69b4 10%, transparent 11%);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px;
+        }
+
+        h1 {
+            margin-top: 120px;
+            color: #fff;
+            text-shadow: 2px 2px 5px hotpink;
+        }
+
+        button {
+            font-size: 22px;
+            padding: 15px 35px;
+            margin: 30px;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        #yes {
+            background-color: #ff69b4;
+            color: white;
+        }
+
+        #no {
+            background-color: #eee;
+        }
+
+        .heart {
+            position: fixed;
+            bottom: -20px;
+            font-size: 24px;
+            animation: fly 3s linear forwards;
+            pointer-events: none;
+        }
+
+        @keyframes fly {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-600px) scale(1.8);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>e có iu a hong? 🥺</h1>
+
+    <button id="yes">có 💕</button>
+    <button id="no">không 😐</button>
+
+    <script>
+        const yesBtn = document.getElementById("yes");
+        const noBtn = document.getElementById("no");
+
+        let yesSize = 1;
+        let noSize = 1;
+
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.className = "heart";
+            heart.innerHTML = "💖";
+            heart.style.left = Math.random() * window.innerWidth + "px";
+            heart.style.fontSize = (20 + Math.random() * 20) + "px";
+            document.body.appendChild(heart);
+
+            setTimeout(() => heart.remove(), 3000);
+        }
+
+        yesBtn.onclick = function () {
+            alert("waoooooo, a cũng iu emmmm 💖💖💖");
+            for (let i = 0; i < 20; i++) {
+                setTimeout(createHeart, i * 100);
+            }
+        };
+
+        noBtn.onclick = function () {
+            yesSize += 0.15;
+            noSize -= 0.15;
+
+            if (noSize < 0.3) noSize = 0.3;
+
+            yesBtn.style.transform = `scale(${yesSize})`;
+            noBtn.style.transform = `scale(${noSize})`;
+
+            createHeart();
+        };
+    </script>
+
+</body>
+</html>
